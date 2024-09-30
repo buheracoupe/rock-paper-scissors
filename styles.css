@@ -25,6 +25,7 @@ flex-direction: column;
     border: 2px solid white;
     border-radius: 5px;
     padding: 5px;
+    max-width: 700px;
 }
 .score-card{
     border:2px solid white;
@@ -129,14 +130,19 @@ cursor: pointer
     position: absolute;
     border: 1rem solid;
     height: 115px;
+    cursor: pointer;
 }
+.hand:hover{
+    border: .8rem solid;
+}
+
 #rock{
 top: -1.25rem;
-left:0;
+left:-1rem;
 border-color: rgb(95, 3, 3);
 }
 #paper{
-right:0;
+right:-.5rem;
 top: -1.25rem;
 border-color: rgb(76, 0, 255);
 }
