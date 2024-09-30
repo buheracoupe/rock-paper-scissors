@@ -13,13 +13,28 @@
  <section id="section1">
     <h2>Rock<br>Paper<br>Scissors</h2>
     <div class="score-card">
-        <p class="score-label">Score</p>
-        <p class="score">3</p>
+        <p class="score-label">SCORE</p>
+        <p class="score">12</p>
     </div>
  </section>
- <section id="section2"></section>
- <section id="section3"></section>   
+ <section id="section2">
+    <div class="triangle-container">
+        <div id="triangle1" class="triangle">
+            <div id="triangle2" class="triangle"></div>
+        <div id="triangle3" class="triangle"></div>
+        </div>
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-rock.svg" alt="fist" class="hand" id="rock">
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-paper.svg" class="hand" alt="back facing hand" id="paper">
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-scissors.svg" class="hand" alt="scissors fingers" id="scissors">
+    </div>
+ </section>
+ <section id="section3">
+    <button onclick="toggleRules()" id="rules">Rules</button>
+ </section>   
+<div class="rules-modal">
+<img id="hideRulesBtn" onclick="hideRules()" src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-close.svg" alt="close icon">
 
+</div>
 
     <script src="main.js"></script>
 </body>

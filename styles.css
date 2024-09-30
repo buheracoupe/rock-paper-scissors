@@ -9,6 +9,13 @@ body{
     color: white;
  font-family: "Quicksand", sans-serif;
 background: radial-gradient(circle, hsl(0, 100%, 50%), hsl(7, 80%, 24%));
+display: flex;
+flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
 }
 #section1{
     width: 70%;
@@ -27,9 +34,114 @@ background: radial-gradient(circle, hsl(0, 100%, 50%), hsl(7, 80%, 24%));
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    margin: 3px;
+    margin: 10px;
+    width: 30%;
+    background: linear-gradient(to right, hsla(0, 0%, 100%, 0.678), hsl(0, 0%, 100%), hsla(0, 0%,100%,0.678));
+    color: rgb(177, 14, 14);
 }
 .score{
     font-size: 3rem;
+    font-weight: 700;
     
+}
+.score-label{
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(114, 2, 2);
+}
+br{
+    line-height: 0.2rem;
+}
+#section1 h2{
+line-height:1.4em;
+}
+.triangle-container{
+    position: relative;
+    height: 100%;
+}
+.triangle{
+    background-color: black;
+    width: 300px;
+    height: 10px;
+    margin: 10px;
+}
+#section2{
+    height: 40%;
+    margin-top: 4rem;
+}
+#triangle1{
+    position: relative;
+    opacity: 40%;
+}
+#triangle2{
+    transform: rotate(56deg);
+    position: absolute;
+    left: -2px;
+    top:-5px;
+    transform-origin: top left;
+    width: 270px;
+}
+
+#triangle3{
+    transform: rotate(-57deg);
+    position: absolute;
+    right: -2px;
+    top:-5px;
+    transform-origin: top right;
+    width: 270px;
+}
+#section3{
+    align-self: flex-end;
+}
+button#rules{
+    background: linear-gradient(to right, hsl(0, 0%, 100%, 0.678), hsl(0, 0%, 100%), hsla(0, 0%,100%,0.678));
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+button#rules:hover{
+    background: linear-gradient(to right, hsla(0, 51%, 64%, 0.678), hsl(0, 0%, 100%), hsla(0, 51%,64%,0.678));
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+}
+.rules-modal{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 35;
+    width: 40%;
+    height: 40%;
+    background: white;
+    z-index: 100;
+    padding: 5px;
+    border-radius: 5px;
+}
+#hideRulesBtn{
+cursor: pointer
+}
+.hand{
+    padding: 12px;
+    background-color: white;
+    z-index: 4;
+    border-radius: 50%;
+    position: absolute;
+    border: 1rem solid;
+    height: 115px;
+}
+#rock{
+top: -1.25rem;
+left:0;
+border-color: rgb(95, 3, 3);
+}
+#paper{
+right:0;
+top: -1.25rem;
+border-color: rgb(76, 0, 255);
+}
+#scissors{
+bottom: -3rem;
+left: 37%;
+border-color: green;
 }
