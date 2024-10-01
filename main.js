@@ -4,7 +4,9 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const optionsArray = [rock, paper, scissors];
-const userOptions = document.querySelectorAll(".hand")
+const userOptions = document.querySelectorAll(".hand");
+const resultsDisplay = document.querySelector(".results-display");
+const triangleContainer = document.querySelector(".triangle-container");
 let selectedOption;
 
 // generate random Computer Pick
@@ -26,6 +28,7 @@ userOptions.forEach((option) => {
 function determineWinner(){
     console.log("is this working?")
 const computerOption = randomPick();
+triangleContainer.style.display = "none";
 // construct switch statement for the conditional checks
 switch(true){
     //When the computer wins case fall-through
@@ -33,12 +36,26 @@ switch(true){
     case computerOption === rock && selectedOption === scissors:
     case computerOption === scissors && selectedOption === paper:
     console.log("Computer Wins")
+    resultsDisplay.innerHTML = `<div class="user-results">
+        <p>You Picked</p>
+    </div>
+    <p class="result">The Computer Won!</p>
+    <div class="computer-results">
+        <p>The Computer Picked</p>
+    </div>`
     break;
     // When the user wins case fall-through
     case selectedOption === rock && computerOption === paper:
     case selectedOption === rock && computerOption === scissors:
     case selectedOption === scissors && computerOption === paper:
     console.log("User Wins")
+    resultsDisplay.innerHTML = `<div class="user-results">
+        <p>You Picked</p>
+    </div>
+    <p class="result">You Won!</p>
+    <div class="computer-results">
+        <p>The Computer Picked</p>
+    </div>`
     break;
     // handling ties
     case selectedOption === computerOption:
