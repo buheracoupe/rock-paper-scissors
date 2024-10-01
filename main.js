@@ -11,16 +11,40 @@ let selectedOption;
 function randomPick(){
     randomOptionIndex = Math.round(Math.random()*2)
     randomOption = optionsArray[randomOptionIndex]
-    console.log(randomOption)
     return randomOption
 }
-const computerChoice = randomPick();
+
+
 
 userOptions.forEach((option) => {
-    option.addEventListener("click", option => selectedOption = option)
+    option.addEventListener("click", () => {
+        selectedOption = option;
+        determineWinner();
+    })
 })
 
-
+function determineWinner(){
+    console.log("is this working?")
+const computerOption = randomPick();
+// construct switch statement for the conditional checks
+switch(true){
+    //When the computer wins case fall-through
+    case computerOption === rock && selectedOption === paper:
+    case computerOption === rock && selectedOption === scissors:
+    case computerOption === scissors && selectedOption === paper:
+    console.log("Computer Wins")
+    break;
+    // When the user wins case fall-through
+    case selectedOption === rock && computerOption === paper:
+    case selectedOption === rock && computerOption === scissors:
+    case selectedOption === scissors && computerOption === paper:
+    console.log("User Wins")
+    break;
+    // handling ties
+    case selectedOption === computerOption:
+        console.log("This is a tie!")
+}
+}
 
 // onclick eventHandler
 function toggleRules(){
