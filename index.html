@@ -27,16 +27,19 @@
         <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-paper.svg" class="hand" alt="back facing hand" id="paper">
         <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-scissors.svg" class="hand" alt="scissors fingers" id="scissors">
     </div>
+    <div class="results-display">
+    </div>
  </section>
  <section id="section3">
-    <button onclick="toggleRules()" id="rules">Rules</button>
+    <button onclick="replayRound()" class=" game-btn replay">Replay</button>
+    <button onclick="resetGame()" class=" game-btn reset">Reset Game</button>
+    <button onclick="toggleRules()" class="game-btn" id="rules">Rules</button>
  </section>   
 <div class="rules-modal">
 <img id="hideRulesBtn" onclick="hideRules()" src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-close.svg" alt="close icon">
 
 </div>
-<div class="results-display">
-</div>
+
 
     <script src="main.js"></script>
 </body>

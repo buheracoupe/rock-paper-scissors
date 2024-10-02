@@ -7,6 +7,8 @@ const optionsArray = [rock, paper, scissors];
 const userOptions = document.querySelectorAll(".hand");
 const resultsDisplay = document.querySelector(".results-display");
 const triangleContainer = document.querySelector(".triangle-container");
+const score = document.querySelector(".score");
+let currentScore = parseInt(score.innerText)
 let selectedOption;
 
 // generate random Computer Pick
@@ -28,47 +30,62 @@ userOptions.forEach((option) => {
 function determineWinner(){
     console.log("is this working?")
 const computerOption = randomPick();
+console.log(computerOption.id)
 triangleContainer.style.display = "none";
 // construct switch statement for the conditional checks
 switch(true){
     //When the computer wins case fall-through
-    case computerOption === rock && selectedOption === paper:
+    case computerOption === paper && selectedOption === rock:
     case computerOption === rock && selectedOption === scissors:
     case computerOption === scissors && selectedOption === paper:
     console.log("Computer Wins")
-    resultsDisplay.innerHTML = `<div class="user-results">
-        <p>You Picked</p>
-    </div>
-    <p class="result">The Computer Won!</p>
-    <div class="computer-results">
-        <p>The Computer Picked</p>
+    resultsDisplay.innerHTML = `<div class="results-container">
+        <div class="user-result">
+            <p>You Picked</p>
+            <img class="hand result-hand" id="${selectedOption.id}" src="${selectedOption.src}" alt="user-choice">
+        </div>
+        <div class="result">Computer Won!</div>
+        <div class="computer-result">
+            <p>Computer Picked</p>
+            <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
+        </div>
     </div>`
     break;
     // When the user wins case fall-through
-    case selectedOption === rock && computerOption === paper:
+    case selectedOption === paper && computerOption === rock:
     case selectedOption === rock && computerOption === scissors:
     case selectedOption === scissors && computerOption === paper:
     console.log("User Wins")
-    resultsDisplay.innerHTML = `<div class="user-results">
-        <p>You Picked</p>
-    </div>
-    <p class="result">You Won!</p>
-    <div class="computer-results">
-        <p>The Computer Picked</p>
+    updateScore(true)
+    resultsDisplay.innerHTML = `<div class="results-container">
+        <div class="user-result">
+            <p>You Picked</p>
+            <img class="hand result-hand" id="${selectedOption.id}" "src="${selectedOption.src}" alt="user-choice">
+        </div>
+        <div class="result">You Won!</div>
+        <div class="computer-result">
+            <p>Computer Picked</p>
+            <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
+        </div>
     </div>`
     break;
     // handling ties
     case selectedOption === computerOption:
-        console.log("This is a tie!")
+        resultsDisplay.innerHTML = `<div class="results-container tie-container">
+        <p class="tie">It's a Tie! You both picked</p>
+        <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
+    </div>`
 }
+resultsDisplay.style.display = "block"
 }
 
 // onclick eventHandler
 function toggleRules(){
-    console.log(rulesModal.display)
     if(rulesModal.style.display === "block") return;
     else{
         rulesModal.style.display = "block"
+        console.log("are you trying?")
+        console.log(rulesModal.style.display)
     }
 }
 
@@ -76,3 +93,35 @@ function toggleRules(){
 function hideRules(){
     rulesModal.style.display = "none";
 }
+
+
+function updateScore(roundResult){
+if(roundResult){
+    currentScore++
+   score.textContent = currentScore;
+}
+}
+
+function replayRound(){
+resultsDisplay.style.display = "none";
+triangleContainer.style.display = "block";
+}
+
+function resetGame(){
+currentScore = 0;
+score.textContent = currentScore;
+resultsDisplay.style.display = "none";
+triangleContainer.style.display = "block";
+}
+
+rulesModal.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent event from bubbling up
+  });
+  
+  document.addEventListener("click", (event) => {
+    if (event.target !== rulesModal && event.target !== rulesBtn && rulesModal.style.display === "block") {
+      hideRules();
+      console.log("don't run")
+      console.log(rulesModal.style.display)
+    }
+  });
