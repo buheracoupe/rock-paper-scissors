@@ -1,3 +1,4 @@
+//Retrieving Elements
 const rulesModal = document.querySelector(".rules-modal");
 const rulesBtn = document.querySelector("#rules");
 const rock = document.querySelector("#rock");
@@ -7,10 +8,12 @@ const optionsArray = [rock, paper, scissors];
 const userOptions = document.querySelectorAll(".hand");
 const resultsDisplay = document.querySelector(".results-display");
 const triangleContainer = document.querySelector(".triangle-container");
-const score = document.querySelector(".score");
+const score = document.querySelector(".user.score");
+const computerScore = document.querySelector(".house.score");
+let currentComputerScore = parseInt(computerScore.innerText)
 let currentScore = parseInt(score.innerText)
 let selectedOption;
-
+let whoWon;
 // generate random Computer Pick
 function randomPick(){
     randomOptionIndex = Math.round(Math.random()*2)
@@ -30,6 +33,7 @@ userOptions.forEach((option) => {
 function determineWinner(){
     console.log("is this working?")
 const computerOption = randomPick();
+
 console.log(computerOption.id)
 triangleContainer.style.display = "none";
 // construct switch statement for the conditional checks
@@ -39,14 +43,19 @@ switch(true){
     case computerOption === rock && selectedOption === scissors:
     case computerOption === scissors && selectedOption === paper:
     console.log("Computer Wins")
+    whoWon = "computer";
+    updateScore();
     resultsDisplay.innerHTML = `<div class="results-container">
         <div class="user-result">
             <p>You Picked</p>
             <img class="hand result-hand" id="${selectedOption.id}" src="${selectedOption.src}" alt="user-choice">
         </div>
-        <div class="result">Computer Won!</div>
+        <div class="result">
+        <p>The House Won!</p>
+        <button onclick="replayRound()" id="play-again">Play Again</button>
+        </div>
         <div class="computer-result">
-            <p>Computer Picked</p>
+            <p>The House Picked</p>
             <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
         </div>
     </div>`
@@ -56,15 +65,19 @@ switch(true){
     case selectedOption === rock && computerOption === scissors:
     case selectedOption === scissors && computerOption === paper:
     console.log("User Wins")
-    updateScore(true)
+    whoWon = "user"
+    updateScore();
     resultsDisplay.innerHTML = `<div class="results-container">
         <div class="user-result">
             <p>You Picked</p>
             <img class="hand result-hand" id="${selectedOption.id}" "src="${selectedOption.src}" alt="user-choice">
         </div>
-        <div class="result">You Won!</div>
+        <div class="result">
+        <p>You Won!</p>
+        <button onclick="replayRound()" id="play-again">Play Again</button>
+        </div>
         <div class="computer-result">
-            <p>Computer Picked</p>
+            <p>The House Picked</p>
             <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
         </div>
     </div>`
@@ -72,8 +85,13 @@ switch(true){
     // handling ties
     case selectedOption === computerOption:
         resultsDisplay.innerHTML = `<div class="results-container tie-container">
-        <p class="tie">It's a Tie! You both picked</p>
+        <p class="tie">Both You and the House picked</p>
         <img class="hand result-hand" id="${computerOption.id}" src="${computerOption.src}" alt="computer-choice">
+        <div class="result">
+        <p>It's a Tie!</p>
+        <button onclick="replayRound()" id="play-again">Play Again</button>
+        </div>
+        
     </div>`
 }
 resultsDisplay.style.display = "block"
@@ -95,33 +113,34 @@ function hideRules(){
 }
 
 
-function updateScore(roundResult){
-if(roundResult){
+function updateScore(){
+if(whoWon === "user"){
     currentScore++
    score.textContent = currentScore;
+}else if(whoWon === "computer"){
+    currentComputerScore++
+    computerScore.textContent = currentComputerScore;
 }
 }
 
 function replayRound(){
+playAgain = document.querySelector("#play-again")
 resultsDisplay.style.display = "none";
 triangleContainer.style.display = "block";
 }
 
 function resetGame(){
 currentScore = 0;
+currentComputerScore =0;
 score.textContent = currentScore;
+computerScore.textContent = currentComputerScore;
 resultsDisplay.style.display = "none";
 triangleContainer.style.display = "block";
 }
 
-rulesModal.addEventListener("click", (event) => {
-    event.stopPropagation(); // Prevent event from bubbling up
-  });
   
   document.addEventListener("click", (event) => {
     if (event.target !== rulesModal && event.target !== rulesBtn && rulesModal.style.display === "block") {
       hideRules();
-      console.log("don't run")
-      console.log(rulesModal.style.display)
     }
   });

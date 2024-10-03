@@ -31,8 +31,7 @@ flex-direction: column;
     border:2px solid white;
     padding: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    gap: 1rem;
     align-items: center;
     border-radius: 5px;
     margin: 10px;
@@ -43,7 +42,11 @@ flex-direction: column;
 .score{
     font-size: 3rem;
     font-weight: 700;
-    
+}
+.score-divider{
+    width: 5px;
+    height: 100%;
+    background-color: rgb(132, 14, 14);
 }
 .score-label{
     font-size: 1rem;
@@ -68,7 +71,7 @@ line-height:1.4em;
 }
 #section2{
     height: 40%;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 #triangle1{
     position: relative;
@@ -106,25 +109,14 @@ line-height:1.4em;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 700;
+    margin: 1.5rem;
 }
 #section3 button:hover{
     background: linear-gradient(to right, hsla(0, 51%, 64%, 0.678), hsl(0, 0%, 100%), hsla(0, 51%,64%,0.678));
     transition: all 0.3s ease;
     transform: scale(1.05);
 }
-.rules-modal{
-    display: none;
-    position: fixed;
-    top: 40%;
-    left: 35;
-    width: 40%;
-    height: 40%;
-    background: white;
-    z-index: 100;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 500px;
-}
+
 #hideRulesBtn{
 cursor: pointer
 }
@@ -182,6 +174,7 @@ border-color: green;
     border-radius: 5px;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.416);
+    min-width: 300px;
 
 
 }
@@ -193,4 +186,119 @@ flex-direction: column;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+}
+#play-again{
+    background-color: white;
+    color: black;
+    padding: 6px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem;
+    transition: ease .2s;
+}
+#play-again:hover{
+transform: scale(1.05);
+color: rgb(30, 30, 166);
+}
+/* rules modal styling */
+.rules-modal{
+    display: block;
+    position: fixed;
+    top: 20%;
+    left: 35;
+    width: 20rem;
+    height:25rem;
+    background: white;
+    z-index: 100;
+    padding: 5px;
+    border-radius: 5px;
+}
+.rules-image > *{
+    filter: grayscale(1);
+}
+.rules-image{
+    position: relative;
+    height: 100%;
+}
+ i{
+font-size: 5rem;
+color: grey;
+}
+#modal-rock{
+right:4rem;
+top: 1rem;
+
+}
+#modal-paper{
+left: 4rem;
+top: 1rem;
+}
+#modal-scissors{
+    bottom:11rem;
+    left: 8rem;
+
+}
+.appendage{
+    border: 6px solid grey;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    padding: 3px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 200;
+}
+#arrow1{
+position: absolute;
+left:7.5rem;
+top:0;
+}
+#arrow2{
+position:absolute;
+right: 5rem;
+top:4.5rem;
+transform: rotate(120deg);
+}
+#arrow3{
+position:absolute;
+left: 5rem;
+top: 4.5rem;
+transform: rotate(60deg);
+}
+
+.rules-text{
+    color: grey;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom:2rem;
+}
+.beats{
+    color:grey;
+    font-weight: 700;
+    font-size: .9rem;
+    position: absolute;
+}
+.beats1{
+left: 8rem;
+top: -1rem;
+}
+.beats2{
+top:6rem;
+left: 2rem;
+}
+.beats3{
+top:6rem;
+right:2rem;
+}
+#hideRulesBtn{
+    width: 1.2rem;
+    height: 1.2em;
 }

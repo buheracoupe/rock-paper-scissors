@@ -8,13 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ac797531a6.js" crossorigin="anonymous"></script>
 </head>
 <body>
  <section id="section1">
     <h2>Rock<br>Paper<br>Scissors</h2>
     <div class="score-card">
-        <p class="score-label">SCORE</p>
-        <p class="score">12</p>
+        <div class="user-score">
+            <p class="score-label"> YOUR SCORE</p>
+            <p class="user score">0</p>
+        </div>
+        <div class="score-divider"></div>
+        <div class="house-score">
+            <p class="score-label"> HOUSE SCORE</p>
+            <p class="house score">0</p>
+        </div>
     </div>
  </section>
  <section id="section2">
@@ -31,14 +39,26 @@
     </div>
  </section>
  <section id="section3">
-    <button onclick="replayRound()" class=" game-btn replay">Replay</button>
     <button onclick="resetGame()" class=" game-btn reset">Reset Game</button>
     <button onclick="toggleRules()" class="game-btn" id="rules">Rules</button>
  </section>   
-<div class="rules-modal">
-<img id="hideRulesBtn" onclick="hideRules()" src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-close.svg" alt="close icon">
-
-</div>
+ <div class="rules-modal">
+    <div class="modal-header">
+        <p class="rules-text">RULES</p>
+        <img id="hideRulesBtn" onclick="hideRules()" src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-close.svg" alt="close icon">    
+    </div>
+    <div class="rules-image">
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-paper.svg" class="appendage"  alt="back facing hand" id="modal-paper">
+        <p class="beats beats3">BEATS</p>
+        <i id="arrow1" class="fa-solid fa-arrow-right"></i>
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-rock.svg" alt="fist" class="appendage" id="modal-rock">
+        <p class="beats beats2">BEATS</p>
+        <i id="arrow2" class="fa-solid fa-arrow-right"></i>
+        <img src="./rock-paper-scissors-master/rock-paper-scissors-master/images/icon-scissors.svg" class="appendage" alt="scissors fingers" id="modal-scissors">
+        <p class="beats beats1">BEATS</p>
+        <i id="arrow3" class="fa-solid fa-arrow-right"></i>  
+    </div>
+    </div>
 
 
     <script src="main.js"></script>
