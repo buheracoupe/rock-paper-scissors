@@ -31,11 +31,13 @@ flex-direction: column;
     border:2px solid white;
     padding: 5px;
     display: flex;
+    justify-content: center;
     gap: 1rem;
     align-items: center;
     border-radius: 5px;
     margin: 10px;
     width: 30%;
+    min-width: 153px;
     background: linear-gradient(to right, hsla(0, 0%, 100%, 0.678), hsl(0, 0%, 100%), hsla(0, 0%,100%,0.678));
     color: rgb(177, 14, 14);
 }
@@ -47,11 +49,14 @@ flex-direction: column;
     width: 5px;
     height: 100%;
     background-color: rgb(132, 14, 14);
+    margin:0;
+    padding: 0;
 }
 .score-label{
     font-size: 1rem;
     font-weight: 600;
     color: rgb(114, 2, 2);
+    text-align: center;
 }
 br{
     line-height: 0.2rem;
@@ -129,6 +134,8 @@ cursor: pointer
     border: 1rem solid;
     height: 115px;
     width: 115px;
+    max-width: 115px;
+    max-height: 115px;
     cursor: pointer;
 }
 .hand.result-hand{
@@ -205,7 +212,7 @@ color: rgb(30, 30, 166);
 }
 /* rules modal styling */
 .rules-modal{
-    display: block;
+    display: none;
     position: fixed;
     top: 20%;
     left: 35;
@@ -250,6 +257,7 @@ top: 1rem;
     border-radius: 50%;
     position: absolute;
     z-index: 200;
+    background-color: rgba(128, 128, 128, 0.348);
 }
 #arrow1{
 position: absolute;
@@ -301,4 +309,17 @@ right:2rem;
 #hideRulesBtn{
     width: 1.2rem;
     height: 1.2em;
+}
+.score-card > *{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+
+/* responsive design */
+@media (max-width: 450px){
+    #section1{
+        width: 90%;
+    }
 }
